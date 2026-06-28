@@ -3,6 +3,7 @@ package services
 import (
 	"ecommerce-api-go/database"
 	"ecommerce-api-go/models"
+	"strings"
 )
 
 func GetProducts() []models.Product {
@@ -68,4 +69,26 @@ func GetMostExpensiveProduct() models.Product {
 	}
 
 	return mostExpensive
+}
+func SearchProductByName(name string) []models.Product {
+	var result []models.Product
+
+	for _, product := range database.Products {
+		if strings.Contains(strings.ToLower(product.Name), strings.ToLower(name)) {
+			result = append(result, product)
+		}
+	}
+
+	return result
+}
+func GetLowStockProducts(limit int) []models.Product {
+	var results []models.Product
+
+	for _, product := range database.Products {
+		if product.Stock <= limit {
+			results = append(results, product)
+		}
+	}
+
+	return results
 }

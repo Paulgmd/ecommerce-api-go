@@ -10,7 +10,6 @@ import (
 func main() {
 	routes.RegisterRoutes()
 
-	fmt.Println("Servidor actualizado con ruta PUT")
-
+	fmt.Println("SERVIDOR VERSION NUEVA")
 	http.ListenAndServe(":8080", nil)
 }

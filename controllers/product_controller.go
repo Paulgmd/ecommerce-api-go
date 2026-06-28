@@ -118,3 +118,20 @@ func GetMostExpensiveProductController(w http.ResponseWriter, r *http.Request) {
 
 	json.NewEncoder(w).Encode(product)
 }
+func SearchProductController(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "application/json")
+
+	name := r.URL.Query().Get("name")
+
+	products := services.SearchProductByName(name)
+
+	json.NewEncoder(w).Encode(products)
+}
+
+func GetLowStockProductsController(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "application/json")
+
+	products := services.GetLowStockProducts(30)
+
+	json.NewEncoder(w).Encode(products)
+}

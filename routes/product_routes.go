@@ -16,4 +16,6 @@ func RegisterRoutes() {
 	http.HandleFunc("/products/count", controllers.CountProductsController)
 	http.HandleFunc("/products/stock", controllers.GetProductsWithStockController)
 	http.HandleFunc("/products/expensive", controllers.GetMostExpensiveProductController)
+	http.HandleFunc("/products/search", controllers.SearchProductController)
+	http.HandleFunc("/products/low-stock", controllers.GetLowStockProductsController)
 }
